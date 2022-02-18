@@ -8,12 +8,17 @@ class Person:
         self.age = age
         self.gender = gender
 
+    def isAdult(self):
+        if self.age >= 21:
+            return True
+        return False
+
 
 def main():
     answer = 'y'
     people = []
     table = PrettyTable()
-    table.field_names = ['Name', 'Surname', 'Age', 'Gender']
+    table.field_names = ['Name', 'Surname', 'Age', 'Gender', 'Old to Work']
 
     while answer.lower() == 'y' or answer.lower() == 'yes':
         try:
@@ -28,7 +33,8 @@ def main():
             print(e)
 
     for person in people:
-        table.add_row([person.name, person.surname, person.age, person.gender])
+        table.add_row(
+            [person.name.title(), person.surname.title(), person.age, person.gender.title(), person.isAdult()])
     print(table)
 
 
